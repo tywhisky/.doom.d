@@ -6,9 +6,11 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Taine Fan"
+      user-mail-address "fty221@gmail.com")
 
+(setq mac-option-modifier 'meta
+      mac-command-modifier 'super)
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -79,4 +81,4 @@
       doom-unicode-font (font-spec :family "Iosevka" :size 18)
       doom-big-font (font-spec :family "Iosevka" :size 19))
 
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))      
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
