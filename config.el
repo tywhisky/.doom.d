@@ -84,3 +84,7 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (setq global-evil-matchit-mode 1)
+
+(use-package nyan-mode
+  :init
+  (add-hook 'after-init-hook #'nyan-mode))
