@@ -88,3 +88,5 @@
 (use-package nyan-mode
   :init
   (add-hook 'after-init-hook #'nyan-mode))
+
+(add-hook 'after-save-hook 'elixir-format)
