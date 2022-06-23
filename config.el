@@ -82,3 +82,5 @@
       doom-big-font (font-spec :family "Iosevka" :size 19))
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+(setq global-evil-matchit-mode 1)

@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! gruvbox-theme)
+(package! evil-matchit)
