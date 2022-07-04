@@ -49,5 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! gruvbox-theme)
 (package! evil-matchit)
+(package! nyan-mode)
+(package! crdt)
