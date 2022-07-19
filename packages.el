@@ -52,3 +52,4 @@
 (package! evil-matchit)
 (package! nyan-mode)
 (package! crdt)
+(package! evil-snipe :disable t)
