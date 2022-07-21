@@ -92,3 +92,9 @@
 (add-hook 'after-init-hook 'nyan-mode)
 
 ;; (add-hook 'after-save-hook 'elixir-format)
+
+(super-save-mode +1)
+(setq super-save-auto-save-when-idle t)
+(add-to-list 'super-save-hook-triggers 'find-file-hook)
+(setq super-save-remote-files nil)
+(setq super-save-exclude '(".gpg"))

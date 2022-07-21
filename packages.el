@@ -53,3 +53,4 @@
 (package! nyan-mode)
 (package! crdt)
 (package! evil-snipe :disable t)
+(package! super-save)
