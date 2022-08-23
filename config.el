@@ -35,10 +35,24 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;
-(setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'doom-gruvbox)
 ;; (setq doom-theme 'doom-material)
+;; (setq doom-theme 'doom-material-dark)
 ;; (setq doom-theme 'doom-solarized-dark)
 ;; (setq doom-theme 'doom-solarized-light)
+;; (setq doom-theme 'doom-oceanic-next)
+;; (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'doom-one)
+(use-package emacs
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-region '(bg-only no-extend))
+  :config
+  ;; Load the theme of your choice:
+  (load-theme 'modus-vivendi) ;; OR (load-theme 'modus-vivendi)
+  :bind ("<f5>" . modus-themes-toggle))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
