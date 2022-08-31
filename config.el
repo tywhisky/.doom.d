@@ -11,6 +11,11 @@
 
 (setq mac-option-modifier 'meta
       mac-command-modifier 'super)
+
+;; Key bindings
+(map! "C-x h" #'previous-buffer
+      "C-x l" #'next-buffer)
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -42,16 +47,16 @@
 ;; (setq doom-theme 'doom-solarized-light)
 ;; (setq doom-theme 'doom-oceanic-next)
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
 
-;; (use-package emacs
-;;   :init
-;;   (setq modus-themes-italic-constructs t
-;;         modus-themes-bold-constructs nil
-;;         modus-themes-region '(bg-only no-extend))
-;;   :config
-;;   (load-theme 'modus-vivendi) ;; OR (load-theme 'modus-vivendi)
-;;   :bind ("<f5>" . modus-themes-toggle))
+(use-package emacs
+  :init
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-region '(bg-only no-extend))
+  :config
+  (load-theme 'modus-vivendi) ;; OR (load-theme 'modus-vivendi)
+  :bind ("<f5>" . modus-themes-toggle))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
