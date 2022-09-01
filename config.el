@@ -114,6 +114,7 @@
 (setq global-evil-matchit-mode 1)
 
 (add-hook 'after-init-hook 'nyan-mode)
+(add-hook 'after-init-hook #'rainbow-delimiters-mode)
 
 ;; (add-hook 'after-save-hook 'elixir-format)
 
