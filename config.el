@@ -47,16 +47,16 @@
 ;; (setq doom-theme 'doom-solarized-light)
 ;; (setq doom-theme 'doom-oceanic-next)
 ;; (setq doom-theme 'doom-dracula)
-;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one)
 
-(use-package emacs
-  :init
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs nil
-        modus-themes-region '(bg-only no-extend))
-  :config
-  (load-theme 'modus-vivendi) ;; OR (load-theme 'modus-vivendi)
-  :bind ("<f5>" . modus-themes-toggle))
+;; (use-package emacs
+;;   :init
+;;   (setq modus-themes-italic-constructs t
+;;         modus-themes-bold-constructs nil
+;;         modus-themes-region '(bg-only no-extend))
+;;   :config
+;;   (load-theme 'modus-vivendi) ;; OR (load-theme 'modus-vivendi)
+;;   :bind ("<f5>" . modus-themes-toggle))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -98,10 +98,16 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(setq doom-font (font-spec :family "Iosevka" :size 18 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Iosevka") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Iosevka" :size 18)
-      doom-big-font (font-spec :family "Iosevka" :size 19))
+
+;; (setq doom-font (font-spec :family "Iosevka" :size 18 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "Iosevka") ; inherits `doom-font''s :size
+;;       doom-unicode-font (font-spec :family "Iosevka" :size 18)
+;;       doom-big-font (font-spec :family "Iosevka" :size 19))
+
+(setq doom-font (font-spec :family "Sarasa Mono SC Nerd" :size 18 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Sarasa Mono SC Nerd") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "Sarasa Mono SC Nerd" :size 18)
+      doom-big-font (font-spec :family "Sarasa Mono SC Nerd" :size 19))
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
