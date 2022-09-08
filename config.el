@@ -123,3 +123,15 @@
 (add-to-list 'super-save-hook-triggers 'find-file-hook)
 (setq super-save-remote-files nil)
 (setq super-save-exclude '(".gpg"))
+
+(let ((alternatives '("doomEmacs.svg"
+                      "doomEmacsTokyoNight.svg"
+                      "doomEmacsDoomOne.svg"
+                      "doomEmacsDracula.svg"
+                      "doomEmacsGruvbox.svg"
+                      "doomEmacsRouge.svg"
+                      "doomEmacsSolarized.svg"
+                      "doomEmacsShadow.svg")))
+  (setq fancy-splash-image
+        (concat doom-private-dir "splash/"
+                (nth (random (length alternatives)) alternatives))))
