@@ -104,10 +104,10 @@
 ;;       doom-unicode-font (font-spec :family "Iosevka" :size 18)
 ;;       doom-big-font (font-spec :family "Iosevka" :size 19))
 
-(setq doom-font (font-spec :family "Sarasa Mono SC Nerd" :size 18 :weight 'semi-light)
+(setq doom-font (font-spec :family "Sarasa Mono SC Nerd" :size 16 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Sarasa Mono SC Nerd") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Sarasa Mono SC Nerd" :size 18)
-      doom-big-font (font-spec :family "Sarasa Mono SC Nerd" :size 19))
+      doom-unicode-font (font-spec :family "Sarasa Mono SC Nerd" :size 16)
+      doom-big-font (font-spec :family "Sarasa Mono SC Nerd" :size 16))
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
