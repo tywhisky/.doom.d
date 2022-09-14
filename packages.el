@@ -54,3 +54,6 @@
 (package! crdt)
 (package! evil-snipe :disable t)
 (package! super-save)
+
+(package! lsp-mode :disable t :ignore t)
+(package! company :disable t :ignore t)
