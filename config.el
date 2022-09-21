@@ -47,7 +47,10 @@
 ;; (setq doom-theme 'doom-solarized-light)
 ;; (setq doom-theme 'doom-oceanic-next)
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(add-to-list 'load-path "~/.doom.d/ef-themes/")
+(require 'ef-themes)
+(load-theme 'ef-night t)
 
 ;; (use-package emacs
 ;;   :init
@@ -136,7 +139,7 @@
         (concat doom-private-dir "splash/"
                 (nth (random (length alternatives)) alternatives))))
 
-(add-to-list 'load-path "lsp-bridge/")
+(add-to-list 'load-path "~/.doom.d/lsp-bridge/")
 
 (require 'yasnippet)
 (yas-global-mode 1)
