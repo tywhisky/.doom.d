@@ -68,7 +68,8 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq tensakai/org-agenda-directory "~/org/")
-(setq org-capture-templates
+(after! org
+  (setq org-capture-templates
       `(("i" "inbox" entry (file ,(concat tensakai/org-agenda-directory "inbox.org"))
          "* TODO %?")
         ("l" "link" entry (file ,(concat tensakai/org-agenda-directory "inbox.org"))
@@ -76,8 +77,7 @@
         ("b" "bookmark" entry (file ,(concat tensakai/org-agenda-directory "bookmark.org"))
          "* TODO %(org-cliplink-capture)" :immediate-finish t)
         ("c" "org-protocol-capture" entry (file ,(concat tensakai/org-agenda-directory "inbox.org"))
-         "* TODO [[%:link][%:description]]\n\n %i" :immediate-finish t)))
-
+         "* TODO [[%:link][%:description]]\n\n %i" :immediate-finish t))))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
