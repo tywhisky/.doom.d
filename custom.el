@@ -12,3 +12,12 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'projectile-ripgrep 'disabled nil)
+
+(use-package! sis
+  :after (evil tmux-pane)
+  :config
+  (delete "C-h" sis-prefix-override-keys)
+  (sis-global-respect-mode t)
+  (sis-global-inline-mode t)
+  (sis-global-context-mode t)
+  (sis-global-cursor-color-mode t))

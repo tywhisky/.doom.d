@@ -61,3 +61,4 @@
   :recipe (:host github
            :repo "manateelazycat/lsp-bridge"
 	   :files ("*")))
+(package! sis)

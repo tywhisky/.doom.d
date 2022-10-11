@@ -179,3 +179,15 @@
       ;; more sensible date format
       mu4e-headers-date-format "%d.%m.%y")
 (setq mu4e-headers-buffer-name "*mu4e-headers*")
+
+(use-package! sis
+  :after (evil)
+  :config
+    (sis-ism-lazyman-config
+   "com.apple.keylayout.ABC"
+   "com.apple.inputmethod.SCIM.ITABC")
+  (delete "C-h" sis-prefix-override-keys)
+  (sis-global-respect-mode t)
+  (sis-global-inline-mode t)
+  (sis-global-context-mode t)
+  (sis-global-cursor-color-mode t))
