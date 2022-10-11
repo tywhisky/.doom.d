@@ -191,3 +191,6 @@
   (sis-global-inline-mode t)
   (sis-global-context-mode t)
   (sis-global-cursor-color-mode t))
+
+(defun foo () (interactive) (execute-kbd-macro (kbd "<escape>")))
+(global-set-key (kbd "C-【") 'foo)
