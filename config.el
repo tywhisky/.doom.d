@@ -185,7 +185,8 @@
   :config
     (sis-ism-lazyman-config
    "com.apple.keylayout.ABC"
-   "com.apple.inputmethod.SCIM.ITABC")
+;;   "com.apple.inputmethod.SCIM.ITABC")
+   "im.rime.inputmethod.Squirrel.Rime")
   (delete "C-h" sis-prefix-override-keys)
   (sis-global-respect-mode t)
   (sis-global-inline-mode t)
