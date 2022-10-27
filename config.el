@@ -72,8 +72,6 @@
 (after! org
   (setq org-capture-templates `(("i" "Inbox" entry  (file "inbox.org")
                                  ,(concat "* TODO %?\n" "/Entered on/ %U"))
-                                ("@" "Inbox [mu4e]" entry (file "inbox.org")
-                                 ,(concat "* TODO Process \"%a\" %?\n" "/Entered on/ %U"))
                                 ("m" "Meeting" entry  (file+headline "agenda.org" "Future")
                                  ,(concat "* %? :meeting:\n" "<%<%Y-%m-%d %a %H:00>>"))
                                 ("n" "Note" entry  (file "notes.org")
@@ -89,17 +87,10 @@
 
 (define-key global-map (kbd "C-c i") 'org-capture-inbox)
 
-;; mu4e Keybinding
-(define-key mu4e-headers-mode-map (kbd "C-c c") 'mu4e-org-store-and-capture)
-(define-key mu4e-view-mode-map    (kbd "C-c c") 'mu4e-org-store-and-capture)
-
 (defun org-capture-mail ()
   (interactive)
   (call-interactively 'org-store-link)
   (org-capture nil "@"))
-
-(define-key mu4e-headers-mode-map (kbd "C-c i") 'org-capture-mail)
-(define-key mu4e-view-mode-map    (kbd "C-c i") 'org-capture-mail)
 
 (add-hook 'org-capture-mode-hook 'delete-other-windows)
 
@@ -235,16 +226,6 @@
 (set-email-account! "gmail" '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
                               (mu4e-trash-folder      . "/[Gmail]/Bin")
                               (smtpmail-smtp-user     . "fty221@gmail.com")) t)
-(setq mu4e-get-mail-command "mbsync gmail"
-      ;; get emails and index every 5 minutes
-      mu4e-update-interval 300
-      ;; send emails with format=flowed
-      mu4e-compose-format-flowed t
-      ;; no need to run cleanup after indexing for gmail
-      mu4e-index-cleanup nil mu4e-index-lazy-check t
-      ;; more sensible date format
-      mu4e-headers-date-format "%d.%m.%y")
-(setq mu4e-headers-buffer-name "*mu4e-headers*")
 
 (use-package! sis
   :after (evil)
