@@ -72,8 +72,8 @@
 (after! org
   (setq org-capture-templates `(("i" "Inbox" entry  (file "inbox.org")
                                  ,(concat "* TODO %?\n" "/Entered on/ %U"))
-                                ("m" "Meeting" entry  (file+headline "agenda.org" "Future")
-                                 ,(concat "* %? :meeting:\n" "<%<%Y-%m-%d %a %H:00>>"))
+                                ("b" "Book" entry  (file "books.org")
+                                 ,(concat "* Book (%a)\n" "/Entered on/ %U\n" "\n" "%?"))
                                 ("n" "Note" entry  (file "notes.org")
                                  ,(concat "* Note (%a)\n" "/Entered on/ %U\n" "\n" "%?")))))
 
