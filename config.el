@@ -40,14 +40,14 @@
 ;; (setq doom-theme 'doom-gruvbox)
 ;; (setq doom-theme 'doom-material)
 ;; (setq doom-theme 'doom-material-dark)
-;; (setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-solarized-dark)
 ;; (setq doom-theme 'doom-solarized-light)
 ;; (setq doom-theme 'doom-oceanic-next)
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'doom-one)
 (add-to-list 'load-path "~/.doom.d/ef-themes/")
 (require 'ef-themes)
-(load-theme 'ef-night t)
+;; (load-theme 'ef-night t)
 
 ;; (use-package emacs
 ;;   :init
