@@ -216,6 +216,8 @@
   :config (map! :map acm-mode-map
                 [tab]           #'acm-select-next
                 [backtab]       #'acm-select-prev)
+  (setq lsp-bridge-enable-search-words 0
+        acm-enable-search-file-words 0)
   (map! :map doom-leader-code-map
         :desc "LSP Rename"
         "r"             #'lsp-bridge-rename
