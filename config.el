@@ -6,12 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Taine Fan" user-mail-address "fty221@gmail.com")
-
-(setq mac-option-modifier 'meta mac-command-modifier 'super)
-
-;; Key bindings
-(map! "C-x h" #'previous-buffer "C-x l" #'next-buffer)
+(setq user-full-name "John Doe"
+      user-mail-address "john@doe.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -36,28 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;;
-;; (setq doom-theme 'doom-gruvbox)
-;; (setq doom-theme 'doom-material)
-;; (setq doom-theme 'doom-material-dark)
-;; (setq doom-theme 'doom-solarized-dark)
-;; (setq doom-theme 'doom-solarized-light)
-;; (setq doom-theme 'doom-oceanic-next)
-;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-one)
-
-(add-to-list 'load-path "~/.doom.d/ef-themes/")
-(require 'ef-themes)
-;; (load-theme 'ef-night t)
-
-;; (use-package emacs
-;;   :init
-;;   (setq modus-themes-italic-constructs t
-;;         modus-themes-bold-constructs nil
-;;         modus-themes-region '(bg-only no-extend))
-;;   :config
-;;   (load-theme 'modus-vivendi) ;; OR (load-theme 'modus-vivendi)
-;;   :bind ("<f5>" . modus-themes-toggle))
+(setq doom-theme 'doom-monokai-classic)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -65,84 +40,8 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
 
-;; ORG Config
-(setq org-directory "~/Documents/org")
-(setq org-agenda-files (list "inbox.org"))
-(setq tensakai/org-agenda-directory "~/org/")
-(after! org
-  (setq org-capture-templates `(("i" "Inbox" entry  (file "inbox.org")
-                                 ,(concat "* TODO %?\n" "/Entered on/ %U"))
-                                ("b" "Book" entry  (file "books.org")
-                                 ,(concat "* Book (%a)\n" "/Entered on/ %U\n" "\n" "%?"))
-                                ("n" "Note" entry  (file "notes.org")
-                                 ,(concat "* Note (%a)\n" "/Entered on/ %U\n" "\n" "%?")))))
-
-(define-key global-map (kbd "C-c c") 'org-capture)
-
-;; Inbox Keybinding
-(defun org-capture-inbox ()
-  (interactive)
-  (call-interactively 'org-store-link)
-  (org-capture nil "i"))
-
-(define-key global-map (kbd "C-c i") 'org-capture-inbox)
-
-(defun org-capture-mail ()
-  (interactive)
-  (call-interactively 'org-store-link)
-  (org-capture nil "@"))
-
-(add-hook 'org-capture-mode-hook 'delete-other-windows)
-
-;; Org Agenda Config
-(define-key global-map (kbd "C-c a") 'org-agenda)
-(setq org-agenda-files (list "inbox.org" "agenda.org"))
-(setq org-agenda-hide-tags-regexp ".")
-(setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
-                                 (todo   . " ")
-                                 (tags   . " %i %-12:c")
-                                 (search . " %i %-12:c")))
-(regexp-opt '("Tasks" "Notes"))
-(setq org-refile-targets
-      '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")))
-(setq org-refile-use-outline-path 'file)
-(setq org-outline-path-complete-in-steps nil)
-
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "NEXT(n)" "HOLD(h)" "|" "DONE(d)")))
-(defun log-todo-next-creation-date (&rest ignore)
-  "Log NEXT creation time in the property drawer under the key 'ACTIVATED'"
-  (when (and (string= (org-get-todo-state) "NEXT")
-             (not (org-entry-get nil "ACTIVATED")))
-    (org-entry-put nil "ACTIVATED" (format-time-string "[%Y-%m-%d]"))))
-(add-hook 'org-after-todo-state-change-hook #'log-todo-next-creation-date)
-
-(setq org-agenda-custom-commands
-      '(("g" "Get Things Done (GTD)"
-         ((agenda ""
-                  ((org-agenda-skip-function
-                    '(org-agenda-skip-entry-if 'deadline))
-                   (org-deadline-warning-days 0)))
-          (todo "NEXT"
-                ((org-agenda-skip-function
-                  '(org-agenda-skip-entry-if 'deadline))
-                 (org-agenda-prefix-format "  %i %-12:c [%e] ")
-                 (org-agenda-overriding-header "\nTasks\n")))
-          (agenda nil
-                  ((org-agenda-entry-types '(:deadline))
-                   (org-agenda-format-date "")
-                   (org-deadline-warning-days 7)
-                   (org-agenda-skip-function
-                    '(org-agenda-skip-entry-if 'notregexp "\\* NEXT"))
-                   (org-agenda-overriding-header "\nDeadlines")))
-          (tags-todo "inbox"
-                     ((org-agenda-prefix-format "  %?-12t% s")
-                      (org-agenda-overriding-header "\nInbox\n")))
-          (tags "CLOSED>=\"<today>\""
-                ((org-agenda-overriding-header "\nCompleted today\n")))))))
-
-(setq org-log-done 'time)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -176,69 +75,33 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; (setq doom-font (font-spec :family "Iosevka" :size 18 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "Iosevka") ; inherits `doom-font''s :size
-;;       doom-unicode-font (font-spec :family "Iosevka" :size 18)
-;;       doom-big-font (font-spec :family "Iosevka" :size 19))
+(defun wsl-copy-region-to-clipboard (start end)
+  "Copy region to Windows clipboard."
+  (interactive "r")
+  (call-process-region start end "clip.exe" nil 0))
 
-(setq doom-font (font-spec :family "Sarasa Mono SC Nerd"
-                           :size 16
-                           :weight 'semi-light) doom-variable-pitch-font (font-spec :family
-                                                                                    "Sarasa Mono SC Nerd") ; inherits `doom-font''s :size
-                           doom-unicode-font (font-spec :family "Sarasa Mono SC Nerd"
-                                                        :size 16) doom-big-font (font-spec :family
-                                                                                           "Sarasa Mono SC Nerd"
-                                                                                           :size
-                                                                                           16))
+(defun wsl-cut-region-to-clipboard (start end)
+  (interactive "r")
+  (call-process-region start end "clip.exe" nil 0)
+  (kill-region start end))
 
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(defun wsl-clipboard-to-string ()
+  "Return Windows clipboard as string."
+  (let ((coding-system-for-read 'dos))
+(substring; remove added trailing \n
+ (shell-command-to-string
+  "powershell.exe -Command Get-Clipboard") 0 -1)))
 
-(setq global-evil-matchit-mode 1)
+(defun wsl-paste-from-clipboard (arg)
+  "Insert Windows clipboard at point. With prefix ARG, also add to kill-ring"
+  (interactive "P")
+  (let ((clip (wsl-clipboard-to-string)))
+(insert clip)
+(if arg (kill-new clip))))
 
-(add-hook 'after-init-hook 'nyan-mode)
-(add-hook 'after-init-hook #'rainbow-delimiters-mode)
-
-;; (add-hook 'after-save-hook 'elixir-format)
-
-(super-save-mode +1)
-(setq super-save-auto-save-when-idle t)
-(add-to-list 'super-save-hook-triggers 'find-file-hook)
-(setq super-save-remote-files nil)
-(setq super-save-exclude '(".gpg"))
-
-(let ((alternatives '("doomEmacs.svg" "doomEmacsTokyoNight.svg" "doomEmacsDoomOne.svg"
-                      "doomEmacsDracula.svg" "doomEmacsGruvbox.svg" "doomEmacsRouge.svg"
-                      "doomEmacsSolarized.svg" "doomEmacsShadow.svg")))
-  (setq fancy-splash-image (concat doom-private-dir "splash/" (nth (random (length alternatives))
-                                                                   alternatives))))
-
-(use-package! lsp-bridge
-  :config (map! :map acm-mode-map
-                [tab]           #'acm-select-next
-                [backtab]       #'acm-select-prev)
-  (setq lsp-bridge-enable-search-words 0
-        acm-enable-search-file-words 0)
-  (map! :map doom-leader-code-map
-        :desc "LSP Rename"
-        "r"             #'lsp-bridge-rename
-        :desc "LSP Find declaration"
-        "j"             #'lsp-bridge-find-def)
-  (global-lsp-bridge-mode))
-
-(set-email-account! "gmail" '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
-                              (mu4e-trash-folder      . "/[Gmail]/Bin")
-                              (smtpmail-smtp-user     . "fty221@gmail.com")) t)
-
-(use-package! sis
-  :after (evil)
-  :config (sis-ism-lazyman-config "com.apple.keylayout.ABC"
-                                  ;;   "com.apple.inputmethod.SCIM.ITABC")
-                                  "im.rime.inputmethod.Squirrel.Rime")
-  (delete "C-h" sis-prefix-override-keys)
-  (sis-global-respect-mode t)
-  (sis-global-inline-mode t)
-  (sis-global-context-mode t)
-  (sis-global-cursor-color-mode t))
+(define-key global-map (kbd "C-x C-y") 'wsl-paste-from-clipboard)
+(define-key global-map (kbd "C-x M-w") 'wsl-copy-region-to-clipboard)
+(define-key global-map (kbd "C-x C-w") 'wsl-cut-region-to-clipboard)
 
 (defun foo ()
   (interactive)
