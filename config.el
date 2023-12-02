@@ -81,3 +81,5 @@
   (interactive)
   (execute-kbd-macro (kbd "<escape>")))
 (global-set-key (kbd "C-【") 'foo)
+
+(setq initial-frame-alist '((top . 1) (left . 1) (width . 200) (height . 100)))
