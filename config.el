@@ -86,3 +86,9 @@
 (setq doom-theme 'ef-elea-dark)
 
 (setq initial-frame-alist '((top . 1) (left . 1) (width . 200) (height . 100)))
+
+(setq +format-on-save-enabled-modes
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+	sql-mode         ; sqlformat is currently broken
+	tex-mode         ; latexindent is broken
+	latex-mode))
